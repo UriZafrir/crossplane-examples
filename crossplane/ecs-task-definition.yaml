@@ -1,0 +1,19 @@
+#unfinished
+apiVersion: ecs.aws.upbound.io/v1beta1
+kind: TaskDefinition
+metadata:
+  name: openresty-task
+spec:
+  forProvider:
+    containerDefinitions: |-
+      [
+        {
+          "name": "first",
+          "image": "service-first",
+          "cpu": 10,
+          "memory": 512,
+          "essential":true
+        }
+      ]
+    family: sampleservice
+    region: us-west-1

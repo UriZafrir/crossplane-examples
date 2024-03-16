@@ -1,0 +1,21 @@
+#unfinished
+#https://marketplace.upbound.io/providers/upbound/provider-aws/v1.2.0/resources/eks.aws.upbound.io/Cluster/v1beta1
+apiVersion: eks.aws.upbound.io/v1beta1
+kind: Cluster
+metadata:
+  annotations:
+    meta.upbound.io/example-id: eks/v1beta1/podidentityassociation
+    uptest.upbound.io/timeout: "2400"
+  labels:
+    testing.upbound.io/example-name: example-pia
+  name: eks-cluster-pia
+spec:
+  forProvider:
+    region: us-west-1
+    roleArnSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example-pia
+    vpcConfig:
+      - subnetIdRefs:
+          - name: sample-subnet1
+          - name: sample-subnet2

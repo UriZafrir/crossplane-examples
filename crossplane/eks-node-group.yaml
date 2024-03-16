@@ -1,0 +1,19 @@
+#unfinished
+apiVersion: eks.aws.upbound.io/v1beta1
+kind: NodeGroup
+metadata:
+  name: sample-eks-ng
+spec:
+  forProvider:
+    clusterNameRef:
+      name: sample-eks-cluster
+    nodeRoleArnRef:
+      name: sample-node-role
+    region: us-west-1
+    scalingConfig:
+      - desiredSize: 1
+        maxSize: 1
+        minSize: 1
+    subnetIdRefs:
+      - name: sample-subnet1
+      - name: sample-subnet2

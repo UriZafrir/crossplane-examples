@@ -1,0 +1,8 @@
+apiVersion: ecr.aws.upbound.io/v1beta1
+kind: Repository
+metadata:
+  name: commit-fargate-openresty
+spec:
+  forProvider:
+    imageTagMutability: IMMUTABLE
+    region: eu-central-1

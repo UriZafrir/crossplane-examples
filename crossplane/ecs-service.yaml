@@ -1,0 +1,19 @@
+#unfinished
+apiVersion: ecs.aws.upbound.io/v1beta1
+kind: Service
+metadata:
+  annotations:
+    meta.upbound.io/example-id: ecs/v1beta1/service
+    upjet.upbound.io/manual-intervention: Resourrce stuck in update loop
+  name: commit-service
+spec:
+  forProvider:
+    clusterSelector:
+      matchLabels:
+        testing.upbound.io/example-name: commit-cluster
+    launchType: FARGATE
+    propagateTags: TASK_DEFINITION
+    region: eu-central-1
+    taskDefinitionSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example-definition
