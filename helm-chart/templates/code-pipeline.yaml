@@ -14,7 +14,7 @@ spec:
           matchLabels:
             testing.upbound.io/example-name: codepipeline_bucket
         type: S3
-    region: us-west-1
+    region: {{ .Values.region }}
     roleArnSelector:
       matchLabels:
         testing.upbound.io/example-name: codepipeline_role

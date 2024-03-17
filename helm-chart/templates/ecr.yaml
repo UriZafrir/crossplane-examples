@@ -5,4 +5,4 @@ metadata:
 spec:
   forProvider:
     imageTagMutability: IMMUTABLE
-    region: eu-central-1
+    region: {{ .Values.region }}

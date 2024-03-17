@@ -6,4 +6,4 @@ metadata:
   name: commit-cluster
 spec:
   forProvider:
-    region: eu-central-1
+    region: {{ .Values.region }}

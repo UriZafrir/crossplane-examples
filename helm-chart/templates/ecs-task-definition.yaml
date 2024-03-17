@@ -16,4 +16,4 @@ spec:
         }
       ]
     family: sampleservice
-    region: us-west-1
+    region: {{ .Values.region }}

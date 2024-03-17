@@ -13,7 +13,7 @@ spec:
         testing.upbound.io/example-name: commit-cluster
     launchType: FARGATE
     propagateTags: TASK_DEFINITION
-    region: eu-central-1
+    region: {{ .Values.region }}
     taskDefinitionSelector:
       matchLabels:
         testing.upbound.io/example-name: example-definition

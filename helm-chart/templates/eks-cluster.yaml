@@ -11,7 +11,7 @@ metadata:
   name: eks-cluster-pia
 spec:
   forProvider:
-    region: us-west-1
+    region: {{ .Values.region }}
     roleArnSelector:
       matchLabels:
         testing.upbound.io/example-name: example-pia
