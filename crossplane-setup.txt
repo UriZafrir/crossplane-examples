@@ -9,6 +9,7 @@ crossplane-stable/crossplane \
 --namespace crossplane-system \
 --create-namespace
 
+#install provider
 '''
 cat <<EOF | kubectl apply -f -
 apiVersion: pkg.crossplane.io/v1
@@ -19,7 +20,30 @@ spec:
   package: xpkg.upbound.io/upbound/provider-aws-s3:v1.1.0
 EOF
 '''
+#create secret
+kubectl create secret \
+generic aws-secret \
+-n crossplane-system \
+--from-file=creds=./aws-credentials.txt
 
+
+# create provider config
+'''
+cat <<EOF | kubectl apply -f -
+apiVersion: aws.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: aws-secret
+      key: creds
+EOF
+'''
 
 wrap up
+
 kubectl delete providers --all
