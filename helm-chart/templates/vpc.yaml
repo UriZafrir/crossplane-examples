@@ -1,11 +1,11 @@
 apiVersion: ec2.aws.crossplane.io/v1beta1
 kind: VPC
 metadata:
-  name: {{ .Values.vpc-name }}
+  name: {{ .Values.vpc_name }}
 spec:
   forProvider:
     region: {{ .Values.region }}
-    cidrBlock: {{ .Values.vpc-cidr }}
+    cidrBlock: {{ .Values.vpc_cidr }}
     enableDnsSupport: true
     enableDnsHostNames: true
     instanceTenancy: default
@@ -13,6 +13,7 @@ spec:
     name: example
 
 ---
+
 apiVersion: ec2.aws.crossplane.io/v1beta1
 kind: Subnet
 metadata:
@@ -20,14 +21,16 @@ metadata:
 spec:
   forProvider:
     region: {{ .Values.region }}
-    availabilityZone: {{ .Values.availabilityZone.1a }}
-    cidrBlock:  {{ .Values.subnet-cidr.subnet1 }}
+    availabilityZone: {{ .Values.availabilityZone.a }}
+    cidrBlock:  {{ .Values.subnet_cidr.subnet1 }}
     vpcIdRef:
-      name: {{ .Values.vpc-name }}
+      name: {{ .Values.vpc_name }}
     mapPublicIPOnLaunch: true
   providerConfigRef:
     name: example
+
 ---
+
 apiVersion: ec2.aws.crossplane.io/v1beta1
 kind: Subnet
 metadata:
@@ -35,10 +38,10 @@ metadata:
 spec:
   forProvider:
     region: {{ .Values.region }}
-    availabilityZone: {{ .Values.availabilityZone.1b }}
-    cidrBlock:  {{ .Values.subnet-cidr.subnet2 }}
+    availabilityZone: {{ .Values.availabilityZone.b }}
+    cidrBlock:  {{ .Values.subnet_cidr.subnet2 }}
     vpcIdRef:
-      name: {{ .Values.vpc-name }}
+      name: {{ .Values.vpc_name }}
     mapPublicIPOnLaunch: true
   providerConfigRef:
     name: example

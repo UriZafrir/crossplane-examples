@@ -1,13 +1,13 @@
 region: eu-central-1 # {{ .Values.region }}
 
-vpc-name: commit-vpc # {{ .Values.vpc-name}}
-vpc-cidr: 10.1.0.0/16 # {{ .Values.vpc-cidr }}
+vpc_name: commit-vpc # {{ .Values.vpc_name}}
+vpc_cidr: 10.1.0.0/16 # {{ .Values.vpc_cidr }}
 
-subnet-cidr:
-  subnet1: 10.1.1.0/24 # {{ .Values.subnet-cidr.subnet1 }}
-  subnet2: 10.1.2.0/24 # {{ .Values.subnet-cidr.subnet2 }}
+subnet_cidr:
+  subnet1: 10.1.1.0/24 # {{ .Values.subnet_cidr.subnet1 }}
+  subnet2: 10.1.2.0/24 # {{ .Values.subnet_cidr.subnet2 }}
 
 availabilityZone:
-  1a: eu-central-1a # {{ .Values.availabilityZone.1a }}
-  1b: eu-central-1b # {{ .Values.availabilityZone.1b }}
-  1c: eu-central-1c # {{ .Values.availabilityZone.1c }}
+  a: eu-central-1a # {{ .Values.availabilityZone.a }}
+  b: eu-central-1b # {{ .Values.availabilityZone.b }}
+  c: eu-central-1c # {{ .Values.availabilityZone.c }}

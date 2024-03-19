@@ -1,0 +1,35 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: VPC
+metadata:
+  name: commit-vpc
+spec:
+  forProvider:
+    region: eu-central-1
+    cidrBlock: 10.1.0.0/16
+    enableDnsSupport: true
+    # enableDnsHostNames: true
+    instanceTenancy: default
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: Subnet
+metadata:
+  name: commit-subnet1
+spec:
+  forProvider:
+    region: eu-central-1
+    availabilityZone: eu-central-1a
+    cidrBlock: 10.1.1.0/24
+    vpcIdRef:
+      name: commit-vpc
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: Subnet
+metadata:
+  name: commit-subnet2
+spec:
+  forProvider:
+    region: eu-central-1
+    availabilityZone: eu-central-1b
+    cidrBlock: 10.1.2.0/24
+    vpcIdRef:
+      name: commit-vpc
