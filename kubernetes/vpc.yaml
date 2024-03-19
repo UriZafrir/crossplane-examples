@@ -1,6 +1,8 @@
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: VPC
 metadata:
+  annotations:
+   crossplane.io/external-name: commit-vpc
   name: commit-vpc
 spec:
   forProvider:
@@ -13,6 +15,8 @@ spec:
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Subnet
 metadata:
+  annotations:
+   crossplane.io/external-name: commit-subnet1
   name: commit-subnet1
 spec:
   forProvider:
@@ -25,6 +29,8 @@ spec:
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Subnet
 metadata:
+  annotations:
+   crossplane.io/external-name: commit-subnet2
   name: commit-subnet2
 spec:
   forProvider:
