@@ -1,0 +1,44 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: vpc-composition
+  labels:
+    provider: aws
+spec:
+  resources:
+    - base:
+        apiVersion: ec2.aws.upbound.io/v1beta1
+        kind: VPC
+        name: my-vpc
+        spec:
+          forProvider:
+            region: eu-central-1
+            cidrBlock: 10.1.0.0/16
+            enableDnsSupport: true
+            instanceTenancy: default
+    - base:
+        apiVersion: ec2.aws.upbound.io/v1beta1
+        kind: Subnet
+        metadata:
+          annotations:
+          name: commit-subnet1
+        spec:
+          forProvider:
+            region: eu-central-1
+            availabilityZone: eu-central-1a
+            cidrBlock: 10.1.1.0/24
+            vpcIdSelector:
+              matchControllerRef: true
+    - base:
+        apiVersion: ec2.aws.upbound.io/v1beta1
+        kind: Subnet
+        metadata:
+          annotations:
+          name: commit-subnet2
+        spec:
+          forProvider:
+            region: eu-central-1
+            availabilityZone: eu-central-1b
+            cidrBlock: 10.1.2.0/24
+            vpcIdSelector:
+              matchControllerRef: true
